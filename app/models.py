@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from . import login_manager
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -37,7 +38,7 @@ class Comments(db.Model):
     __tablename__ ='comments'
     id = db.Column(db.Integer,primary_key= True)
     name=db.Column(db.String(255))
-    pitches=db.relationship('Pitch',backref='comments',lazy='dynamic')
+    pitch=db.relationship('Pitch',backref='comments',lazy='dynamic')
 
     def save_comment(self):
         db.session.add(self)
@@ -70,10 +71,11 @@ class Pitch(db.Model):
         db.session.add(self)
         db.session.commit()
 
+        
     @classmethod
     def get_pitches(cls):
         '''
         gets pitches from the database
         '''
         pitches=Pitch.query.all()
-        return Pitches
+        return pitches

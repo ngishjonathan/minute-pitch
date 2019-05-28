@@ -1,6 +1,6 @@
 <style>
     .container-fluid{
-    background-color:rgba(82, 5, 117, 0.822);
+    background-color: gray;
       }
     </style>
     <div class="navbar navbar-inverse" role="navigation">
@@ -19,7 +19,7 @@
                         <li><a href="/">Home</a></li>
 
                         {% if current_user.is_authenticated %}
-                        <li style="color:white;padding:15px;"><{{current_user.username}}</li>
+                        <li style="color:blue;">{{current_user.username}}</li>
                         <li><a href="{{url_for('main.index',uname=current_user.username)}}">Profile</a></li>
                         <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
                       {% else %}
